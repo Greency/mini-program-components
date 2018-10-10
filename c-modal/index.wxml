@@ -1,0 +1,21 @@
+<block wx:if='{{isShow}}'>
+  <view class='c-mask'>
+    <view class='c-pop-up'>
+      <text class='title {{title ? "" : "title-bottom-border"}}' wx:if='{{title}}'>{{title}}</text>
+      <slot></slot>
+      <view class='btn-container'>
+        <view bindtap='_cancel'>
+          <button>{{cancelText}}</button>
+        </view>
+        <view class='ok-btn-container'>
+          <block wx:if='{{isAuthorized}}'>
+            <button open-type="getUserInfo" bindgetuserinfo="_submit">{{submitText}}</button>
+          </block>
+          <block wx:else>
+            <button bindtap='_submit'>{{submitText}}</button>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

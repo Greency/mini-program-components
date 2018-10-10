@@ -1,0 +1,63 @@
+.c-mask{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5)
+}
+
+.c-pop-up{
+  width: 80%;
+  border-radius: 10rpx;
+  background-color: white;
+}
+
+.c-pop-up .title{
+  display: inline-block;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.c-pop-up .title-bottom-border{
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.c-pop-up .btn-container{
+  display: flex;
+  border-top: 1px solid #F0F0F0;
+  padding-bottom: 10rpx;
+}
+
+.c-pop-up .btn-container view{
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+.c-pop-up .btn-container view:first-child{
+  border-right: 1px solid #F0F0F0;
+}
+.c-pop-up .btn-container view:last-child{
+  color: #3cc51f;
+}
+.c-pop-up .btn-container view button{
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: white;
+  transform: scale(1.03, 1.03);
+  font-size: 30rpx;
+  font-weight: 200;
+}
+.c-pop-up .btn-container view:last-child button{
+  color: #3cc51f;
+}
