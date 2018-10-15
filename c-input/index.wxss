@@ -11,8 +11,10 @@
 .c-input-box input{
   display: inline-block;
 }
+.c-input-box .c-clear-btn-box{
+  height: 35rpx;
+}
 .c-input-box .c-clear-btn{
   width: 35rpx;
   height: 35rpx;
-  order: 2;
 }
