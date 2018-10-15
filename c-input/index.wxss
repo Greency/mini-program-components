@@ -1,0 +1,17 @@
+.c-input-box{
+  box-sizing: border-box;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  padding: 0 10rpx;
+}
+.c-input-box input{
+  flex-grow: 1;
+}
+.c-input-box .c-clear-btn{
+  width: 35rpx;
+  height: 35rpx;
+}
