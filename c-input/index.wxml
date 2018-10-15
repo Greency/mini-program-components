@@ -1,4 +1,6 @@
 <view class='c-input-box'>
   <input type='{{type}}' name='{{name}}' value='{{value}}' placeholder='{{placeholder}}' bindinput='input' bindfocus='focus' bindblur='blur' bindconfirm='confirm'></input>
-  <image wx:if='{{value !== "" && clearable}}' class='c-clear-btn' src='../icon/close-circle.png' catchtap='clear'></image>
+  <view>
+    <image wx:if='{{value !== "" && clearable}}' class='c-clear-btn' src='../icon/close-circle.png' catchtap='clear'></image>
+  </view>  
 </view>

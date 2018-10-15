@@ -9,9 +9,10 @@
   padding: 0 10rpx;
 }
 .c-input-box input{
-  flex-grow: 1;
+  display: inline-block;
 }
 .c-input-box .c-clear-btn{
   width: 35rpx;
   height: 35rpx;
+  order: 2;
 }
