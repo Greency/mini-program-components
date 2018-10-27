@@ -1,0 +1,10 @@
+<view class='c-tab-box' style='height: {{height}}rpx'>
+  <view class='c-tab {{currentTabIndex === index ? "c-tab-active" : ""}}' 
+        style='line-height: {{height}}rpx;{{currentTabIndex === index ? "color:"+ activeColor : ""}}' 
+        wx:for='{{tabs}}' 
+        wx:key='{{index}}' 
+        data-index='{{index}}' 
+        bindtap='handleTabChange'>
+    {{item.text}}
+  </view>
+</view>
