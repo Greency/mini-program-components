@@ -24,7 +24,9 @@ Component({
         this.setData({
           currentTabIndex: index
         })
-        this.triggerEvent('tabChange', this.data.tabs[index]);
+        let detail = this.data.tabs[index];
+        detail.index = index;
+        this.triggerEvent('tabChange', detail);
       }
     }
   }
