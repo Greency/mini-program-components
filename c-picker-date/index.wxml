@@ -1,0 +1,6 @@
+<picker class='picker-box' mode="multiSelector" value="{{currentDateArr}}" range="{{dateArr}}" bindchange="handleTimeChange" bindcolumnchange='handleColumnChange'>
+  <view class="picker">
+    <text wx:if='{{value === ""}}' style='{{placeholderStyle}}'>{{placeholder}}</text>
+    <text wx:else style='valueStyle'>{{value}}</text>
+  </view>
+</picker>

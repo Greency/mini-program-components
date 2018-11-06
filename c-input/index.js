@@ -1,4 +1,4 @@
-// mini-program-components/c-input/index.js
+
 Component({
   properties: {
     value:{
