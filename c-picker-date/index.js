@@ -80,7 +80,6 @@ Component({
           if (item === currentD + '日') currentDateArr[2] = index;
         })
 
-        debugger;
         this.setData({
           currentDateArr
         })
