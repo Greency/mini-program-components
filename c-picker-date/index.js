@@ -25,9 +25,6 @@ Component({
       value: ''
     }
   },
-  myData: {
-    ok: 'fdsf'
-  },
   data: {
     currentDateArr: [0, 0, 0, 0, 0],
     dateArr: []
