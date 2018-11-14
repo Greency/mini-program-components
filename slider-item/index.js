@@ -1,14 +1,25 @@
 // mini-program-components/c-slider/index.js
 Component({
+  relations:{
+    '../slider/index': {
+      type: 'parent',
+      linked: function (target) {
+        // 每次被插入到custom-ul时执行，target是custom-ul节点实例对象，触发在attached生命周期之后
+      },
+      linkChanged: function (target) {
+        // 每次被移动后执行，target是custom-ul节点实例对象，触发在moved生命周期之后
+      },
+      unlinked: function (target) {
+        // 每次被移除时执行，target是custom-ul节点实例对象，触发在detached生命周期之后
+      }
+    }
+  },
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
   },
   properties: {
-    //要渲染的数据
-    lists: {
-      type: Array,
-      value: []
-    },
+    index: Number,  //当前单项的索引
+    style: String,
     //单个按钮的宽度
     singleBtnW: { 
       type: Number,
@@ -21,6 +32,9 @@ Component({
     sliderClickNum: 0,
   },
   lifetimes: {
+    attached: function(){
+      console.log('slider-item-index: ',  this.data.index)
+    }
   },
   methods: {
     touchS: function (e) {

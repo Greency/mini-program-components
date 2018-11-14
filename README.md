@@ -4,11 +4,11 @@ tips: 本厂库存放的是本人在开发小程序时封装的一些小的组�
 
 ### 组件列表
 
-- 模态框（c-modal）
-- 输入框（c-input）
-- 侧滑单项（c-slider）
-- tab组件（c-tab）
-- 时间选择器（c-picker-date）
+- 模态框（modal）
+- 输入框（input）
+- 侧滑单项（slider）
+- tab组件（tab）
+- 时间选择器（picker-date）
 
 ### 模态框
 #### 属性
