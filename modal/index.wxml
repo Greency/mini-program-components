@@ -1,21 +1,21 @@
-<block wx:if='{{isShow}}'>
-  <view class='c-mask'>
-    <view class='c-pop-up'>
-      <text class='title {{title ? "" : "title-bottom-border"}}' wx:if='{{title}}'>{{title}}</text>
-      <slot></slot>
-      <view class='btn-container'>
-        <view bindtap='_cancel'>
-          <button>{{cancelText}}</button>
-        </view>
-        <view class='ok-btn-container'>
-          <block wx:if='{{isAuthorized}}'>
-            <button open-type="getUserInfo" bindgetuserinfo="_submit">{{submitText}}</button>
-          </block>
-          <block wx:else>
-            <button bindtap='_submit'>{{submitText}}</button>
-          </block>
-        </view>
+<view class='mask' wx:if='{{show}}' catchtouchmove='handleTouchMove'>
+  <view class='modal'>
+    <view class='title'>{{title}}</view>
+    <text class='content'>{{content}}</text>
+    <view class='btn-box'>
+      <view class='btn-wrapper'>
+        <view class='btn cancel' style='{{cancelStyle}}' catchtap='handleCancel'>{{cancelText}}</view>
       </view>
+      <view class='btn-wrapper'>
+        <block wx:if='{{type === "normal"}}'>
+          <view class='btn submit' style='{{submitStyle}}' catchtap='handleSubmit'>{{submitText}}</view>
+        </block>
+        <block wx:elif='{{type === "login"}}'>
+          <button class='login-btn' open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo"></button>
+          <view class='btn submit' style='{{submitStyle}}' catchtap='handleSubmit'>{{submitText}}</view>
+        </block>
+      </view>
+      
     </view>
   </view>
-</block>
+</view>

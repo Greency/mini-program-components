@@ -1,55 +1,45 @@
-
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
+    content: String,
+    cancelStyle: String,
+    submitStyle: String,
+    show: Boolean,
+    type: {
+      type: String,
+      value: 'normal'
+    },
     title: {
       type: String,
-      value: null
-    },
-    submitText: {
-      type: String,
-      value: "同意"
+      value: '提示'
     },
     cancelText: {
       type: String,
-      value: "拒绝"
+      value: '取消'
     },
-    isAuthorized: {
-      type: Boolean,
-      value: false
+    submitText: {
+      type: String,
+      value: '确定'
     },
-    isShow: {
-      type: Boolean,
-      value: false
-    }
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
   },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
-    _cancel: function(e){
-      let detail = e.detail
+    handleTouchMove: function(){},
+    handleSubmit: function(e){
       this.setData({
-        isShow: false
+        show: false
       });
-      this.triggerEvent('cancel', detail);
+      this.triggerEvent('onSubmit', e.detail);
     },
-    _submit: function(e){
+    handleCancel: function(e){
       this.setData({
-        isShow: false
+        show: false
       });
-      let detail = e.detail;
-      this.triggerEvent('submit', detail);
+      this.triggerEvent('onCancel', e.detail);
+    },
+    //【陈勇 2019-03-11 093855】获取用户信息
+    handleGetUserInfo: function(e){
+      this.triggerEvent('onSubmit', e.detail);
     }
   }
 })

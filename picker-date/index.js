@@ -1,36 +1,33 @@
+const REG_FORMAT = /(Y{2,4})|(M{1,2})|(D{1,2})|(h{1,2})|(m{1,2})|(s{1,2})/g;
+
 Component({
   properties: {
+    format: String,
+    value: String,
+    valueStyle: String,
+    disabled: Boolean,
+
     mode: {
       type: String,
       value: 'dateTime'
-    },
-    value: {
-      type: String,
-      value: ''
     },
     placeholder: {
       type: String,
       value: '选择时间'
     },
-    disabled: {
-      type: Boolean,
-      value: false
-    },
     placeholderStyle: {
       type: String,
       value: 'color: #DDDDDD'
-    },
-    valueStyle: {
-      type: String,
-      value: ''
     }
   },
   data: {
     currentDateArr: [0, 0, 0, 0, 0],
-    dateArr: []
+    dateArr: [],
+    currentDateValue: []
   },
   lifetimes: {
     attached: function () {
+      console.log('format: ', this.data.format === '');
       this.init();
     }
   },
@@ -194,18 +191,26 @@ Component({
     //选择时间后的回调
     handleTimeChange: function (e) {
       let { value } = e.detail,
-        time = '';
+        time = '',
+        detail = {},
+        currentDateValue = [];
 
       value.forEach((item, index) => {
-        time += this.formateDate(this.data.dateArr[index][item]);
+        let temp = this.formatToStandardDate(this.data.dateArr[index][item]);
+        currentDateValue.push(temp);
+        time += temp;
       })
       this.setData({
-        value: time
+        value: time,
+        currentDateValue
       })
-      this.triggerEvent('timeChange', time);
+      detail.data = time;
+      detail.formatData = (this.data.format.trim() === '') ? time : this.formatResult(this.data.format);
+      console.log('detail: ',detail);
+      this.triggerEvent('timeChange', detail);
     },
-    //格式化时间
-    formateDate: function (time) {
+    //将时间格式化成标准格式
+    formatToStandardDate: function (time) {
       let reg = /秒/,
         replaceStr = '';
 
@@ -215,11 +220,8 @@ Component({
       } else if (/日/.test(time)) {
         reg = /日/;
         replaceStr = ' ';
-      } else if (/时/.test(time)) {
-        reg = /时/;
-        replaceStr = ':';
-      }else if(/分/.test(time)){
-        reg = /分/;
+      } else if (/时|分/.test(time)) {
+        reg = /时|分/;
         replaceStr = ':';
       }
 
@@ -227,5 +229,63 @@ Component({
         return replaceStr;
       });
     },
-  },
+    //格式化结果日期
+    formatResult(reg) {
+      if (this.data.mode === 'Date') return this.formatDateResult(reg);
+      if (this.data.mode === 'Time') return this.formatTimeResult(reg);
+
+      return this.formatDateResult(reg) + this.formatTimeResult(reg);
+    },
+    //格式化 Date 结果
+    formatDateResult(reg) {
+      if (!typeof reg === 'string') new Error(` '${reg}' 不是一个字符串！`);
+      let Y = this.data.currentDateValue[0],
+          M = this.data.currentDateValue[1],
+          D = this.data.currentDateValue[2];
+
+      return reg.replace(REG_FORMAT, (match) => {
+        switch (match) {
+          case 'YYYY':
+            return Y;
+          case 'YY':
+            return String(Y).slice(-2);
+          case 'MM':
+            return M < 10 ? `0${M}` : M;
+          case 'M':
+            return M;
+          case 'DD':
+            return D < 10 ? `0${D}` : D;
+          case 'D':
+            return D;
+          default:
+            new Error(` '${match}' 解析出错！`);
+        }
+      });
+    },
+    //格式化 Time 结果
+    formatTimeResult(reg) {
+      if (!typeof reg === 'string') new Error(` '${reg}' 不是一个字符串！`);
+      let h = this.data.currentDateValue[0],
+        m = this.data.currentDateValue[1],
+        s = this.data.currentDateValue[2];
+      return reg.replace(REG_FORMAT, (match) => {
+        switch (match) {
+          case 'hh':
+            return h < 10 ? `0${h}` : h;
+          case 'h':
+            return h;
+          case 'mm':
+            return m < 10 ? `0${m}` : m;
+          case 'm':
+            return m;
+          case 'ss':
+            return s < 10 ? `0${s}` : s;
+          case 's':
+            return s;
+          default:
+            new Error(` '${match}' 解析出错！`);
+        }
+      });
+    }
+  }
 })

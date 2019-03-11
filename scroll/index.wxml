@@ -1,0 +1,6 @@
+<view class='c-container'>
+  <view class='c-loading-box' style='height: {{maxPullDownHeight}}px'>松开刷新...</view>
+  <view class='c-scroll-container' style='transform: translateY({{ !loading ? scrollY : 0}}px);height: {{h}}px' bindtouchstart='handleTouchStart' bindtouchmove='handleTouchMove' bindtouchend='handleTouchEnd' >
+    <slot></slot>
+  </view>
+</view>
