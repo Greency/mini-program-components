@@ -14,8 +14,11 @@
           <button class='login-btn' open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo"></button>
           <view class='btn submit' style='{{submitStyle}}' catchtap='handleSubmit'>{{submitText}}</view>
         </block>
+        <block wx:elif='{{type === "setting"}}'>
+          <button class='login-btn' open-type="openSetting" bindopensetting="handleOpenSetting"></button>
+          <view class='btn submit' style='{{submitStyle}}' catchtap='handleSubmit'>{{submitText}}</view>
+        </block>
       </view>
-      
     </view>
   </view>
 </view>

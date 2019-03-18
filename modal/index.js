@@ -40,6 +40,10 @@ Component({
     //【陈勇 2019-03-11 093855】获取用户信息
     handleGetUserInfo: function(e){
       this.triggerEvent('onSubmit', e.detail);
+    },
+    //【陈勇 2019-03-18 144618】打开设置页面的回调
+    handleOpenSetting: function(e){
+      this.triggerEvent('onCallback', e);
     }
   }
 })
