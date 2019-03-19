@@ -1,3 +1,0 @@
-<view class='c-slider'>
-  <slot></slot>
-</view>

@@ -1,4 +1,0 @@
-<view class='c-status-bar' style='height: {{h}}px;background-color: {{backgroundColor}};'>
-  <view class='c-back-btn c-back-black'></view>
-  <text>{{title}}</text>
-</view>

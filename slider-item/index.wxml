@@ -1,8 +1,0 @@
-<view class='c-slider'>
-  <view class='c-slider-content' style='{{style}}' data-index='{{index}}' bindtouchstart='touchS' bindtouchmove='touchM' bindtouchend='touchE'>
-    <slot name='content'></slot>
-  </view>
-  <view class='c-btn-box'>
-    <slot name='btn'></slot>
-  </view>
-</view>
