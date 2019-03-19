@@ -14,19 +14,31 @@ tips: 本厂库存放的是本人在开发小程序时封装的一些小的组�
 #### 属性
 
 属性名称 | 默认值|描述
----|---
-title |null|模态框的标题
+---|---|---
+type | "normal" |模态框的类型
+show | false |控制模态框的出现和隐藏
+title |“提示”|模态框的标题
+content |""|模态框的内容
 submitText|'同意'|”确认按钮“的文案
 cancelText|'拒绝'|“取消按钮”的文案
-isAuthorized|false|是否是微信授权登录的模态框
-isShow|false|是否显示
+submitStyle|“”|“确认按钮”的样式
+cancelStyle|“”|“取消按钮”的样式
+
+#### type的值
+
+| 具体的值  | 描述                     |
+| --------- | ------------------------ |
+| "normal"  | 模态框的默认类型         |
+| “login”   | 登录授权类型的模态框     |
+| “setting” | 打开微信设置页面的模态框 |
 
 #### 方法
 
 方法名 | 返回值|描述
----|---
-submit |e.detail|
-cancel|e.detail|
+---|---|---
+onSubmit |e.detail|type为“login”时，返回值包含用户的信息
+onCancel|e.detail|点击后，弹出框隐藏
+onCallback|e|type为“setting”时才有，返回值包含了打开微信设置后的回调信息
 
 ### tab组件
 #### 属性
