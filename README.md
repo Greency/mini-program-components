@@ -41,31 +41,40 @@ onCancel|e.detail|点击后，弹出框隐藏
 onCallback|e|type为“setting”时才有，返回值包含了打开微信设置后的回调信息
 
 ### tab组件
+
 #### 属性
 
 属性名称 | 默认值|描述
----|---
-tabs | []|此值得类型为[{id: xx, text: xx}]
+---|---|---
+tabs | [] |此值得类型为[{id: xx, text: xx}]
 height:|80(rpx)|显示高度
-activeColor|'#ffe600'|选中时文字的样式
+activeColor|'#ffe600'|选中时文字的颜色
 
 #### 方法
 
 方法名 | 返回值|描述
----|---
-tabChange |e.detail|tab切换时的回调
+---|---|---
+tabChange |e.detail|tab切换时的回调函数
 
 ### 时间选择器
 #### 属性
 
 属性名称 | 默认值|描述
----|---
-mode | 'dateTime'|其他值：date, time
+---|---|---
+mode | 'dateTime'| 时间选择器的类型 
 value|''|
 valueStyle|''|
 placeholder|'选择时间'|
 placehoslderStyle|'color: #DDDDDD'|
 disabled|false|
+
+#### mode
+
+| 具体的值 | 描述                     |
+| -------- | ------------------------ |
+| dateTime | 选中的结果为年月日时分秒 |
+| date     | 选中的结果为年月日       |
+| time     | 选中的结果为时分秒       |
 
 #### 方法
 
