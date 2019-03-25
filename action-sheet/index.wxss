@@ -1,0 +1,46 @@
+.show{
+  visibility: visible !important;
+}
+
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 888;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: all 200ms;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.action-sheet{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  transform: translateY(100%);
+  transition: transform 200ms ease-in;
+}
+.action-sheet-show{
+  transform: translateY(0%);
+}
+.action-sheet .item{
+  width: 100%;
+  height: 90rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 90rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+.action-sheet .share-btn{
+  position: relative;
+}
+.action-sheet .share-btn button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
