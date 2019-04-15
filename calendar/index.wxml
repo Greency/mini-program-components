@@ -1,0 +1,30 @@
+<view class='calendar'>
+  <view class='header'>
+    <view class='left-btn-box'>
+      <view class='icon-arrows icon-arrows-double-left' data-type='prev' bindtap='handleChangeYear'></view>
+      <view class='icon-arrows icon-arrows-left m-left-10' data-type='prev' bindtap='handleChangeMonth'></view>
+    </view>
+    <text>{{year}}年{{month}}月</text>
+    <view class='right-btn-box'>
+      <view class='icon-arrows icon-arrows-right m-right-10' data-type='next' bindtap='handleChangeMonth'></view>
+      <view class='icon-arrows icon-arrows-double-right' data-type='next' bindtap='handleChangeYear'></view>
+    </view>
+  </view>
+  <view class='week-box'>
+    <view class='week-item' wx:for='{{weeks}}' wx:key='{{index}}'>{{item}}</view>
+  </view>
+  <view class='day-box'>
+    <view class='day-item-row' wx:for='{{days}}' wx:key='{{index}}'>
+      <view class='day-item {{styleEnum[day.status]}}' 
+            wx:for='{{item}}' 
+            wx:key='{{dayIndex}}' 
+            wx:for-item='day' 
+            wx:for-index='dayIndex' 
+            data-year='{{day.year}}'
+            data-month='{{day.month}}'
+            data-day='{{day.value}}'
+            data-week='{{day.week}}'
+            bindtap='handleChangeDay'>{{day.value}}</view>
+    </view>
+  </view>
+</view>
