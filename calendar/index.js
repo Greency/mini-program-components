@@ -19,8 +19,6 @@ Component({
     weeks: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
     days: [],
 
-    row: -1,
-    column: -1,
     year: 2019,
     month: 3,
     day: 1,
@@ -31,13 +29,16 @@ Component({
       let date = new Date(),
         year = date.getFullYear(),
         month = date.getMonth() + 1,
-        day = date.getDate();
+        day = date.getDate(),
+        week = date.getDay();
 
       this.setData({
         year,
         month,
-        day
+        day,
+        week: week === 0 ? 7 : week
       });
+      this.handleTriggerEvent();
       this.renderDays(year, month, day);
     }
   },
@@ -47,11 +48,7 @@ Component({
           { year, month } = this.data;
       
       type === 'prev' ? --year : ++year;
-      this.setData({ 
-        year,
-        row: -1,
-        column: -1
-      });
+      this.setData({ year });
       this.renderDays(year, month, 1);
       this.handleTriggerEvent();
     },
@@ -77,9 +74,7 @@ Component({
 
       this.setData({ 
         year, 
-        month,
-        row: -1,
-        column: -1 
+        month
       });
       this.renderDays(year, month, 1);
       this.handleTriggerEvent();
@@ -93,10 +88,6 @@ Component({
     },
     //渲染数据
     renderDays: function(year, month, day){
-      let prevDays = this.getDays(year, month - 1),
-          nowDays = this.getDays(year, month),
-          week = new Date(`${year}/${month}/1`).getDay();  //计算指定日期是星期几
-
       this.setData({
         days: this.formatDays(year, month, day)
       });
@@ -127,7 +118,7 @@ Component({
     },
     formatDays: function(year, month, day){
       let week = new Date(`${year}/${month}/${1}`).getDay(),
-          prevMaxDay = this.getDays(year, month - 1),
+          prevMaxDay = this.getDays(year, month === 1 ? 12 : month - 1),
           nowMaxDay = this.getDays(year, month),
           prevDays = [],
           nowDays = [],
@@ -135,7 +126,6 @@ Component({
           weekDays = [],
           days = [],
           temp = [];
-
       if(week === 0) week = 7;
 
       for(let i = 0; i < week - 1; i++){
@@ -165,9 +155,10 @@ Component({
 
       temp = temp.concat(prevDays).concat(nowDays).concat(nextDays);
       temp.forEach((item, index) => {
-        item.week = index + 1;
+        let remainder = (index + 1) % 7;
+        item.week = remainder === 0 ? 7 : remainder ;
         weekDays.push(item);
-        if ((index + 1) % 7 === 0) {
+        if (remainder === 0) {
           days.push(weekDays);
           weekDays = [];
         }

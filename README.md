@@ -7,11 +7,13 @@ tips: 本厂库存放的是本人在开发小程序时封装的一些小的组�
 - 模态框（modal）
 - 输入框（input）
 - 侧滑单项（slider）
-- tab组件（tab）
+- tab（tab）
 - 时间选择器（picker-date）
 - 操作菜单（action-sheet）
+- 日历（calendar）
 
-### 模态框
+### 模态框（modal）
+
 #### 属性
 
 属性名称 | 默认值|描述
@@ -41,7 +43,8 @@ onSubmit |e.detail|type为“login”时，返回值包含用户的信息
 onCancel|e.detail|点击后，弹出框隐藏
 onCallback|e|type为“setting”时才有，返回值包含了打开微信设置后的回调信息
 
-### tab组件
+### tab组件（tab）
+
 #### 属性
 
 属性名称 | 默认值|描述
@@ -56,7 +59,8 @@ activeColor|'#ffe600'|选中时文字的颜色
 ---|---|---
 tabChange |e.detail|tab切换时的回调函数
 
-### 时间选择器
+### 时间选择器（picker-date）
+
 #### 属性
 
 属性名称 | 默认值|描述
@@ -104,3 +108,11 @@ timeChange |e.detail|返回当前选中的时间
 | 方法名 | 返回值                            | 描述                                              |
 | ------ | --------------------------------- | ------------------------------------------------- |
 | onTap  | detail: { index: xxx, type: xxx } | 当当前选项的type为cancel和other时，才会触发此方法 |
+
+### 日历（calendar）
+
+#### 方法
+
+| 方法名   | 返回值                                              | 描述                             |
+| -------- | --------------------------------------------------- | -------------------------------- |
+| onChange | detail: {  year: xx, month: xx, day: xx, week: xx } | 返回用户选中日期的年、月、日、周 |
